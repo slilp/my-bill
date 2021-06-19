@@ -1,25 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { lazy, Suspense } from "react";
+import "bootstrap/dist/css/bootstrap.css"; // Import precompiled Bootstrap css
+import "./style/main.scss";
+import { Redirect, Route, Switch } from "react-router-dom";
+import Footer from "./views/Footer";
+import Header from "./views/Header";
+
+const Dashboard = lazy(() => import("./views/Dashboard"));
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Suspense fallback={<h1 className="text-center">Loading...</h1>}>
+      <Header></Header>
+      <Switch>
+        <Route path="/dashboard">
+          <Dashboard></Dashboard>
+        </Route>
+        <Redirect to="/dashboard"></Redirect>
+      </Switch>
+      <Footer></Footer>
+    </Suspense>
   );
 }
 
