@@ -16,3 +16,40 @@ export const Button = styled.button`
 export const Section = styled.div`
   height: 10rem;
 `;
+
+interface ImageBoxProps {
+  image?: string;
+}
+
+export const ImageBox = styled.div<ImageBoxProps>`
+  height: 9rem;
+  flex: 1;
+  border-radius: 15px;
+  text-align: center;
+  position: relative;
+`;
+
+export const Image = styled.img`
+  height: 9rem;
+  border-radius: 15px;
+  cursor: pointer;
+`;
+
+export const DeleteImg = styled.div`
+  position: absolute;
+  right: 0;
+  top: 0;
+  cursor: pointer;
+  background-color: salmon;
+  color: white;
+  border-radius: 50%;
+  height: 2rem;
+  width: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &:hover {
+    background-color: #ebb2ac;
+  }
+`;

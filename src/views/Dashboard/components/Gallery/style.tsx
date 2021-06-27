@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Button = styled.button`
+export const AddButton = styled.button`
   cursor: pointer;
   background-color: #d1f1e6;
   border: 0px;
@@ -13,6 +13,6 @@ export const Button = styled.button`
   }
 `;
 
-export const Section = styled.div`
+export const SectionAdd = styled.div`
   height: 10rem;
 `;

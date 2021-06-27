@@ -1,14 +1,18 @@
-import React, { useState } from "react";
-import { Section, ImageBox, EditButton } from "./style";
+import React, { useState, useEffect } from "react";
+import { Section, ImageBox, EditButton, Image } from "./style";
 import { FcIdea } from "react-icons/fc";
 import { Row, Col, Card } from "react-bootstrap";
 import { GoKebabVertical } from "react-icons/go";
 import CardEdit from "../CardEdit";
+import Zoom from "react-medium-image-zoom";
 
 interface CardProps {
   title?: string;
   amount?: number;
-  images?: string[];
+  images: BillImages[];
+}
+interface BillImages {
+  preview?: string;
 }
 
 function BillCard({ title = "No title", amount = 0, images = [] }: CardProps) {
@@ -41,13 +45,17 @@ function BillCard({ title = "No title", amount = 0, images = [] }: CardProps) {
           <Row>
             {images.map((value: any) => (
               <Col xl={6} className="p-1">
-                <ImageBox image={value}></ImageBox>
+                <ImageBox>
+                  <Zoom>
+                    <Image src={value.preview} />
+                  </Zoom>
+                </ImageBox>
               </Col>
             ))}
           </Row>
         </Section>
       ) : (
-        <CardEdit setEditAction={setEdit}></CardEdit>
+        <CardEdit setEditAction={setEdit} initImages={images}></CardEdit>
       )}
     </>
   );

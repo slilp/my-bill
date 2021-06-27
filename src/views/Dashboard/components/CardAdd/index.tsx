@@ -1,6 +1,6 @@
 import { Section, ImageBox, Button } from "./style";
 import { FcIdea } from "react-icons/fc";
-import { Row, Col } from "react-bootstrap";
+import { Dropdown } from "react-bootstrap";
 import { GoCheck, GoX } from "react-icons/go";
 import AddImage from "../AddImage";
 
@@ -22,6 +22,15 @@ function CardAdd(props: any) {
             className="form-control"
             placeholder="ยอดเงิน"
           ></input>
+          <br></br>
+          <Dropdown>
+            <Dropdown.Toggle variant="success">เลือกบริษัท</Dropdown.Toggle>
+            <Dropdown.Menu>
+              <Dropdown.Item>ดีฟาย</Dropdown.Item>
+              <Dropdown.Item>พีฟ้าไทย</Dropdown.Item>
+              <Dropdown.Item>พีฟ้าอังกฤษ</Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
         </div>
 
         <div className="d-flex justify-content-end w-50">
@@ -34,11 +43,8 @@ function CardAdd(props: any) {
         </div>
       </div>
       <hr></hr>
-      <Row>
-        <Col xl={6} className="p-1">
-          <AddImage></AddImage>
-        </Col>
-      </Row>
+
+      <AddImage></AddImage>
     </Section>
   );
 }

@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
 export const Section = styled.div`
-  background: rgba(203, 228, 251, 0.8);
+  box-shadow: 0 3px 6px rgba(180, 176, 176, 0.16),
+    0 3px 6px rgba(200, 200, 200, 0.23);
   /* height: 15rem; */
   border-radius: 15px;
   padding: 1.5rem;

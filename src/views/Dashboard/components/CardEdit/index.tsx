@@ -1,10 +1,20 @@
+import React, { useState } from "react";
 import { Section, ImageBox, Button } from "./style";
 import { FcIdea } from "react-icons/fc";
-import { Row, Col } from "react-bootstrap";
 import { GoCheck, GoX } from "react-icons/go";
+import { Dropdown } from "react-bootstrap";
 import AddImage from "../AddImage";
 
-function CardEdit(props: any) {
+interface BillImages {
+  preview?: string;
+}
+
+interface CardEditProps {
+  initImages: BillImages[];
+  setEditAction: (status: boolean) => void;
+}
+
+function CardEdit({ initImages = [], setEditAction }: CardEditProps) {
   return (
     <Section>
       <div className="d-flex align-items-center">
@@ -22,23 +32,28 @@ function CardEdit(props: any) {
             className="form-control"
             placeholder="ยอดเงิน"
           ></input>
+          <br></br>
+          <Dropdown>
+            <Dropdown.Toggle variant="success">เลือกบริษัท</Dropdown.Toggle>
+            <Dropdown.Menu>
+              <Dropdown.Item>ดีฟาย</Dropdown.Item>
+              <Dropdown.Item>พีฟ้าไทย</Dropdown.Item>
+              <Dropdown.Item>พีฟ้าอังกฤษ</Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
         </div>
 
         <div className="d-flex justify-content-end w-50">
           <Button className="text-center mr-0">
             <GoCheck></GoCheck>
           </Button>
-          <Button onClick={() => props.setEditAction(false)}>
+          <Button onClick={() => setEditAction(false)}>
             <GoX></GoX>
           </Button>
         </div>
       </div>
       <hr></hr>
-      <Row>
-        <Col xl={6} className="p-1">
-          <AddImage></AddImage>
-        </Col>
-      </Row>
+      <AddImage initImages={initImages}></AddImage>
     </Section>
   );
 }

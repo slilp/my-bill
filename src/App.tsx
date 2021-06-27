@@ -1,6 +1,7 @@
 import React, { lazy, Suspense } from "react";
 import "bootstrap/dist/css/bootstrap.css"; // Import precompiled Bootstrap css
 import "./style/main.scss";
+import "react-medium-image-zoom/dist/styles.css";
 import { Redirect, Route, Switch } from "react-router-dom";
 import Footer from "./views/Footer";
 import Header from "./views/Header";
